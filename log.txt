@@ -1,0 +1,6 @@
+A    gprolog-1.3.0/interpreter/topic-assert-clause-retract.pl
+U    gprolog-1.3.0/interpreter/runTest.sh
+A    java/TopicTryCatchFinally.java
+A    clisp/funcall.cl
+U    clisp/apply.cl
+Aktualisiert zu Revision 391.

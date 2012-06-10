@@ -1,0 +1,4 @@
+mzscheme: subprocess
+clisp: execute
+c: system
+java: java.lang.Runtime.exec, new java.lang.ProcessBuilder()

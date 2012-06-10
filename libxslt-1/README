@@ -1,0 +1,3 @@
+run tests with
+lib/test.sh <testfile>.sh
+

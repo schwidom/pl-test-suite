@@ -1,0 +1,87 @@
+
+WORK="$PWD/work"
+
+mkdir -p "$WORK"
+
+: ${TST_ID:=$$}
+
+: ${TST_COUNT_OK:=0}
+: ${TST_COUNT_FAIL:=0}
+: ${TST_COUNT_LATEST:=0}
+
+export TST_ID TST_COUNT_OK TST_COUNT_FAIL TST_COUNT_LATEST
+
+tst_test() 
+{
+ local CALL=""
+
+ set +o histexpand
+
+ while test 0 -ne $#
+ do
+  case $1 in 
+   (!) CALL+="$1 " ;;
+   (*) CALL+="'$1' " ;;
+  esac
+
+  shift
+ done
+
+ eval "$CALL" &&
+ {
+  TST_COUNT_OK=$(( $TST_COUNT_OK + 1 ))
+  true
+ } ||
+ {
+  TST_COUNT_FAIL=$(( $TST_COUNT_FAIL + 1 ))
+  echo "test failed: eval $CALL"
+  false
+ }
+}
+
+tst_checkComplainAndAdjustExpected()
+{
+ local COUNT=$1
+ local COUNT_TESTS=$(( $TST_COUNT_OK + $TST_COUNT_FAIL ))
+ local COUNT_TESTS_LOCAL=$(( $COUNT_TESTS - $TST_COUNT_LATEST))
+
+ TST_COUNT_LATEST=$COUNT_TESTS
+
+ builtin test "$COUNT" -eq "$COUNT_TESTS_LOCAL" &&
+ {
+  true
+ } ||
+ {
+  echo "Expected Test Count (from last checkpoint to here) doesn't match: COUNT_TESTS_LOCAL: $COUNT_TESTS_LOCAL, COUNT: $COUNT"
+  false
+ }
+}
+
+tst_result()
+{
+ echo "tests: ok: $TST_COUNT_OK, fail: $TST_COUNT_FAIL, countLatest: $TST_COUNT_LATEST"
+}
+
+tst_state_save()
+{
+
+ F="$WORK/state_${TST_ID}.source"
+ rm -f $F
+
+ for i in TST_COUNT_OK TST_COUNT_FAIL TST_COUNT_LATEST
+
+ do
+  eval "local IV=\$$i"
+  echo "$i=$IV" >>$F
+ done
+}
+
+tst_state_load()
+{
+
+ F="$WORK/state_${TST_ID}.source"
+ source $F
+ # rm -f $F # evil
+}
+
+

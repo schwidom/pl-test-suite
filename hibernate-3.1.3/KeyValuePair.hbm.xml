@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+ <class name="KeyValuePair" table="KEYVALUEPAIR">
+  <id name="id" column="KEYVALUEPAIR_ID">
+   <generator class="native" />
+  </id>
+  <property name="key" type="string" column="KEY" />
+  <property name="value" type="string" column="VALUE" />
+ </class>
+</hibernate-mapping>
+

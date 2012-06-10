@@ -1,0 +1,40 @@
+
+record teststate( countOk, countFail, countLatest)
+
+procedure testInit()
+ return teststate( 0, 0, 0)
+end
+
+procedure testOk( te)
+
+ te.countOk+:= 1
+
+end
+
+procedure testFail( te)
+
+ te.countFail+:= 1
+ write( "FAIL")
+
+end
+
+procedure checkComplainAndAdjustExpected( te, count)
+ countTests:= te.countOk + te.countFail
+ countTestsLocal:= countTests - te.countLatest
+
+ te.countLatest:= countTests
+
+ if( count === countTestsLocal) then
+  return 1
+ else
+ {
+  write( "Expected Test Count (from last checkpoint to here) doesn't match: countTestsLocal: ", 
+   countTestsLocal, " count: ", count);
+  return
+ }
+
+end
+
+procedure result( te)
+ return "tests: ok: "|| te.countOk|| " fail: "|| te.countFail|| " countLatest: "|| te.countLatest
+end

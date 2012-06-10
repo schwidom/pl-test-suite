@@ -1,0 +1,4 @@
+GIT_WORK=git-work
+rm -rf $GIT_WORK
+mkdir $GIT_WORK
+cd $GIT_WORK

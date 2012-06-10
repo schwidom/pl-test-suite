@@ -1,0 +1,5 @@
+to test the ./test.sh:
+run ./test.sh ./test_test.sh
+
+dont add the *.out files to the repository
+but add the *.exp files to the repository

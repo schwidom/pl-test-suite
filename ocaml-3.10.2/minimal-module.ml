@@ -1,0 +1,3 @@
+module MinimalModule=
+ struct
+end;;

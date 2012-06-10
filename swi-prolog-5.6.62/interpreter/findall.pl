@@ -1,0 +1,22 @@
+
+main :- 
+
+ consult( testenv),
+
+ checkComplainAndAdjustExpected( 0),
+
+ ( findall( X1, ( X1=1; X1=2), RES1), [ 1, 2] = RES1 -> testOk; testFail),
+
+ ( findall( [ a, X2], ( X2=1; X2=2), RES2), [ [ a, 1], [ a, 2]] = RES2 -> testOk; testFail),
+
+ ( findall( X3, ( X3=1, X3=2), RES3), [] = RES3 -> testOk; testFail),
+
+ checkComplainAndAdjustExpected( 3),
+
+% see also bagof.pl, findall.pl, forall.pl
+
+ result(S), 
+ format( S, []),
+
+ true.
+

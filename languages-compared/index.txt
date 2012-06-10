@@ -1,0 +1,8 @@
+scheme: list-ref; (= 5 (list-ref '(4 5 6) 1))
+lisp: nth; (= 5 (nth 1 '(4 5 6)))
+java: java.util.List.get
+
+scheme: vector-ref; (= 5 (vector-ref #(4 5 6) 1))
+lisp: aref; (= 5 (aref #(4 5 6) 1))
+c: []
+java: java.util.Vector.elementAt, java.util.Vector.get

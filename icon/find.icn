@@ -1,0 +1,30 @@
+
+procedure main()
+
+ te:=testInit()
+ 
+ checkComplainAndAdjustExpected( te, 0)
+
+ testOk( te, 1 === find( "a", "axaza"));
+
+ checkComplainAndAdjustExpected( te, 1)
+
+ testOk( te, 3 === ( 1 ~=== find( "a", "axaza")));
+
+ checkComplainAndAdjustExpected( te, 1)
+
+ testOk( te, 5 === ( 4 < find( "a", "axaza")));
+
+ checkComplainAndAdjustExpected( te, 1) 
+
+ testOk( te, 4 === ( find( "c", "123c456") === find( "a", "123a56")));
+
+ checkComplainAndAdjustExpected( te, 1) 
+
+ every find( "a", "axaza") do testOk( te, 1)
+
+ checkComplainAndAdjustExpected( te, 3) 
+
+ write( result( te))
+
+end

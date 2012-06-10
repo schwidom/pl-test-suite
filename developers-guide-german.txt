@@ -1,0 +1,85 @@
+Mi 10. Sep 14:58:49 CEST 2008
+Author: Frank Schwidom
+
+Glossar:
+
+PL Test Suite: Test Suite für mehrere Programmiersprachen und APIs
+
+Symbol: Zeichenkette in der Bedeutung von Schlüsselwort, Funktion, Macro, Symbol, Variable ...
+
+diff: unix-tool zum zeilenweisen Vergleich von Testdateien, gibt erno 0 und keine Ausgabe auf stdout, wenn 2 Testdateien gleich sind.
+
+pl-extension: Datei Extension der jeweiligen Programmiersprache
+
+Problem:
+
+Oft wird der Einstieg in neue Programmiersprachen und APIs dadurch erschwert, daß nur unzureichende Beispiele in Dokumentationen zu finden sind. Die Dokumentation ist oft zu einseitig und beschreibt Symbole und mögliche Nebeneffekte nur oberflächlich. In Quellcode-Beispielen ist hin und wieder nicht eindeutig zu erkennen, was In- und Output ist und ob es sich um Eingaben / Ausgaben oder Variablenbelegungen handelt. Zuviel semantische Beziehungen muss man aus dem Text entnehmen, der oft nicht so strukturiert ist, daß die wesentlichen Dinge sofort erkannt werden können. Die PL Test Suite soll hier eine Hilfestellung geben und einen möglichen Ausgangspunkt dafür bieten, daß Dokumentationen zukünftiger Projekte immer mehr in maschienenlesbarer und verifizierbarer Form vorliegen.
+
+Algemein:
+
+Die Testsuite "PL Test Suite" (PL fuer Programming Language) ist dazu bestimmt, Tests für viele Programmiersprachen und auch APIs bereitzustellen. Die Tests sollen gemäss den verwendeten Symbolen innerhalb der jeweiligen Testdatei einfach zu verstehen sein und dienen in erster Linie dem Verständnis von Symbolen und Ihren Nebeneffekten als eine Art Dokumentationshilfe.
+ Darüberhinaus wird das Prinzip vermittelt, wie Tests zu schreiben sind. Die Testsuite dienst nicht dem Ersatz von Unit-Tests, wie sie viele Programmiersprachen und APIs bereits mitbringen. Diese Tests sind in der Regel nicht als Dokumentationshilfe geeignet, da zu einem Test-Thema oft zu viele spezialfälle behandelt werden - mehr, als für ein Verständnis vonnöten ist. 
+ Weiterhin ist es mit dieser Tetsuite durch vorhandene Querverweise möglich, einen Quereinstieg zu neuen Programmiersprachen durch bereits bekannte zu schaffen.
+
+Developmnent:
+
+Es gibt für jede Programmiersprache 2 Sorten von Tests, die sich dadurch unterscheiden, auf welchem Weg der Vergleich von Soll und Ist Werten verläuft. 
+
+(1 diff-Tests) Tests, in denen der Output (stdout) des Testprogramms mit einem bereits generierten Output per diff (unix) verglichen wird
+(2 pl-Tests) Tests, in denen der Vergleich in der entsprechenden Programmiersprache stattfindet und am Ende eines Testdurchlaufs das Ergebnis gezeigt wird
+
+Eine dritte Möglichkeit, in der beide Varianten kombiniert werden (also eine Testdatei, die einen pl-test durchfuehrt und gleichzeitig Output fuer einen diff-test liefert) kann unter Umständen sinnvoll sein, aber sollte nach Möglichkeit vermieden werden, um eine klare Abgrenzung zu schaffen.
+
+ diff-tests:
+ diff-tests bieten zunächst eine Möglichkeit, die Testumgebung der jeweiligen Programmiersprache zu testen, da die Testumgebung sich aus Henne-Ei Gründen nicht selbst tesen kann.
+
+ diff-tests benoetigen Backreferenzen, um bei Fehlern die Stelle im Code besser finden zu können. Das heisst, dass bei jedem Test Marken oder Zeilennummern ausgegeben werden müssen, die dann im Output erscheinen und im Fehlerfall durch diff aufgedeckt werden.
+
+ pl-tests:
+ pl-tests werden durch Testroutinen in der jeweiligen Programmiersprache ermöglicht. Dem Testsymbol wird immer nur ein Ausdruck übergeben, der entweder True oder False ist. In Programmiersprachen, in denen derartige Symbole nicht existieren, müssen alternative Werte definiert und verwendet werden. Es muss also zunächst eine Funktion "test" programmiert werden, die bei einem übergebenen False eeine Fehlerausgabe liefert, aus der sich der Ort des Fehlers und ggf. der Grund des Fehlers ermitteln lässt.
+ Auch Negativtests müssen bei einem erfolgreichen Fail / einer Exception ein True liefern, bleibt das Fail aus, muss False geliefert werden.
+
+Keiner der Tests darf das Hostsystem gefährden.
+
+Architektur:
+
+ testaufbau:
+ Jede Testdatei ist nach dem Namen des zu testenden Symbols oder Themas benannt. Werden mehrere Symbole verwendet und in diesem Zusammenhang erklärt, so müssen für die restlichen Symbole entsprechend benannte Links zu der Testdatei angelegt werden.
+
+ Jede Test-Datei beginnt mit der Vorstellung der zu testenden Symbole. Das kann bedeuten, daß zunächst die Typen der Symbole (in Testform) präsentiert werden. (Beispiel Java: test( "" instanceof String), clisp: (test '(eq 'SIMPLE-BASE-STRING (car (type-of "")))))
+ Danach folgen nur soviele Tests, daß die Funktionsweise und mögliche Nebeneffekte und Besonderheiten sichtbar werden. Am Ende jedes Tests folgen Querverweise zu ähnlichen oder einem Funktionskreis zugehörigen Symbolen.
+
+ Verzeichnisse:
+ Es gilt weiterhin zu unterscheiden, ob ein Test einer Sprache / API eine konkrete Implementation oder einen Standard testet. Handelt es sich um eine Implementation, dann können Symbole getestet werden, die in dem Standard nicht vorkommen. Zum Beispiel wird im Verzeichnis clisp die gleichnamige common-lisp Implementation getestet. Folglich muss es auch ein Verzeichnis common-lisp geben, in dem nur die Standard-Symbole getestet werden. Die Testfunktion in clisp darf clisp-Spezifische Symbole benutzen. Wenn eine Sprache einen Standard implementiert, so muß ein Symbolischer Link "implements-standard" zu diesem Verzeichnis zeigen, damit die Standard-Tests auch mit den jeweiligen Spezifischen Tests getestet werden können.
+
+ /<language-implementation>/<symbol|topic>.<pl-extension>
+ /<language-implementation>/implements-standard ->../<language-standard>
+ /<language-standard>
+ /<language-standard>/<symbol|topic>.<pl-extension>
+ /lib ... diff-test routinen
+ /languages-compared
+
+ Querverweise zwischen Programmiersprachen:
+ 
+ Es soll ein weiteres Verzeichnis languages-compared existieren, welches querverweise zwischen funktional gleichen oder ähnlichen symbolen und kompletten ausdrücken zeigt.
+ Es können am Ende der Test-Dateien in den Programmiersprach Verzeichnissen auch Querverweise zu anderen Programmiersprach Verzeichnissen erfolgen.
+
+Status:
+
+ Derzeit existieren Tests zu der common Lisp Implementation clisp unter /clisp, erste vergleichende Dateien unter /languages-compared und ein Beispiel fuer ein Testprogramm unter /lib.
+
+Weiterführende Einsatzgebiete:
+
+ Unterstützung bei der Fehlersuche
+ Hat man es später mit einer neuen Version der Programmiersprache zu tun oder mit der eines anderen Herstellers, so kann es passieren, daß diverse Testcases nicht mehr funktionieren - Fälle, auf die man sich aber beim Programmieren möglicherweise früher in anderen Projekten verlassen hat. Somit kann man bei durch einen Run der Testsuite auf der geänderten Sprache/API Fehler finden, die dann in bereits bestehenden Programmen auftreten können.
+ 
+ Das Projekt kann bei entsprechender Grösse zu einer wertvollen Quellcode-Datenbank werden.
+
+Code als Doku
+
+TODO:
+
+ clisp:
+  - Vergleich der Anzahl der positiven Testdurchläufe mit Sollwert
+  - Bessere Architektur, um auch mehrere bzw alle Testdurchläufe in einem Durchgang abzuwickeln
+

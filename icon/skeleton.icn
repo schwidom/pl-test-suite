@@ -1,0 +1,12 @@
+
+procedure main()
+
+ te:=testInit()
+ 
+ checkComplainAndAdjustExpected( te, 0)
+ testOk( te)
+ checkComplainAndAdjustExpected( te, 1)
+
+ write( result( te))
+
+end

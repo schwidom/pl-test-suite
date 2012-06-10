@@ -1,0 +1,80 @@
+<project name="key-value-pair" default="help">
+
+ <target name="help">
+  <echo>
+   ant -f ${ant.file} compile
+   ant -f ${ant.file} run
+   ant -f ${ant.file} compileAndRun
+  </echo>
+ </target>
+
+ <target name="compile">
+  <javac srcdir="." includes="KeyValuePair.java KeyValuePairTest.java">
+   
+   <classpath>
+    <pathelement location="/usr/share/hibernate-3.1/lib/hibernate3.jar" />
+    <pathelement location="," />
+   </classpath>
+  </javac>
+ </target>
+
+ <path id="hibernate-libraries">
+
+  <pathelement location="." />
+
+  <fileset dir="/usr/share/dom4j-1/lib/">
+   <include name="*.jar" />
+  </fileset>
+
+  <fileset dir="/usr/share/hibernate-3.1/lib/">
+   <include name="*.jar" />
+  </fileset>
+
+  <fileset dir="/usr/share/commons-logging/lib/">
+   <include name="*.jar" />
+  </fileset>
+
+  <fileset dir="/usr/share/commons-collections/lib/">
+   <include name="*.jar" />
+  </fileset>
+
+  <fileset dir="/usr/share/hsqldb/lib/">
+   <include name="*.jar" />
+  </fileset>
+
+  <fileset dir="/usr/share/ant-core/lib/">
+   <include name="*.jar" />
+  </fileset>
+
+  <fileset dir="/usr/share/ant/lib/">
+   <include name="*.jar" />
+  </fileset>
+
+  <fileset dir="/usr/share/cglib-2.2/lib/">
+   <include name="*.jar" />
+  </fileset>
+
+  <fileset dir="/opt/sun-j2ee-1.3.1/lib/">
+   <include name="*.jar" />
+  </fileset>
+
+  <fileset dir="/usr/share/asm-2.2/lib/">
+   <include name="*.jar" />
+  </fileset>
+
+  <fileset dir="/usr/share/antlr/lib/">
+   <include name="*.jar" />
+  </fileset>
+
+ </path>
+
+ <target name="run">
+  <java classname="KeyValuePairTest" classpathref="hibernate-libraries" />
+ </target>
+
+ <target name="compileAndRun">
+  <antcall target="compile" />
+  <antcall target="run" />
+ </target>
+
+</project>

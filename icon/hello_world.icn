@@ -1,0 +1,14 @@
+
+procedure main()
+
+ te:=testInit()
+ 
+ checkComplainAndAdjustExpected( te, 0)
+
+ write( "Hello World");
+
+ checkComplainAndAdjustExpected( te, 0)
+
+ write( result( te))
+
+end

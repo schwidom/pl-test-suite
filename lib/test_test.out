@@ -1,0 +1,15 @@
+test_positive.sh
+ok
+test_negative.sh
+1c1
+< output: differing from expected: 0815
+---
+> output: differing from expected: 4711
+fail
+test_dot_sh_forgotten
+filename test_dot_sh_forgotten ends not to .sh
+usage: ./test.sh <test-binary>.sh
+fail
+test_isdir.sh
+test_isdir.sh is no file
+fail

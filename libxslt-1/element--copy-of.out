@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+
+  /: <testdata testattribute="test"/>
+  /.: <testdata testattribute="test"/>
+  /./.: <testdata testattribute="test"/>
+  .: <testdata testattribute="test"/>
+  ./.: <testdata testattribute="test"/>
+  ././.: <testdata testattribute="test"/>
+  /testdata: <testdata testattribute="test"/>
+  @testattribute: test
+  true(): true
+  false(): false
+  'this is a string': this is a string
+  1=1: true
+  $var: string content of variable var

@@ -1,0 +1,2 @@
+run tests with:
+./run-vim-script.sh <source>.vim

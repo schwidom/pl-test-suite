@@ -1,0 +1,91 @@
+Mo 13. Okt 12:13:43 CEST 2008
+Author: Frank Schwidom
+Translation: Nico Patzold
+
+Glossary:
+
+PL Test Suite: Test Suite for several programming languages and APIs
+
+Symbol: String with the meaning of key word, function, macro, symbol, variable ...
+
+diff: unix-tool for the line-by-line comparison of testfiles, which gives out erno 0 and no output on stdout, if two #testfiles are identical.
+
+pl-extension: file extension of the particular programming language
+
+The problem:
+
+the start into new programming languages and APIs is often discouraged by unapropriate examples to be found in the documentation.
+the documentation often is too one-sided and describes symbols and possible side effects only on the surface. In source code examples it is sometimes not clearly possible to distinguish between in- and output and if you are dealing with inputs/outputs or definitons of variables. too many semantic relationships have to be taken/retrieved out of the text, which is often not structured enough for the important things to be recognized. Here the PL Test Suite is supposed to give support/advice and to provide a possible starting point for documentations of future projects in machine-readable and verifiable form.
+
+In general:
+
+The testsuite "PL Test Suite" (PL for Programming Language) is designed for providing tests for many programming languages and also APIs. The tests are proposed to be easy to understand by the used symbols within the respective testfile and fulfill the primar purpose of understanding symbols and their side effects as a sort of documentation support.
+In addition the principle is transported of how the tests are to be written. The testsuite does not serve as replacement of unit-tests, just like many programming languages and APIs already come along with. These tests are normally not suitable as a doumentation help, because for every test-topic there are often too many special cases dealt with - more than needed for understanding.
+By using existing cross references it is still longer possible with this testsuite to create a transfer to new programming languages by already known ones.
+
+Development:
+
+For each programming language there are 2 kinds of tests differing by the way how they compare desired and actual values.
+ 
+(1 diff-Tests) Tests, in which the output (stdout) of the testprogram is compared with an already  by diff (unix) generated output.
+
+(2 pl-Tests) Tests, in which the comparison takes place within the programming language and the result is shown in the end of a testrun. 
+
+A third possiblity, in which both variants are combined (a testfile, that makes a pl-test and at the same time provides output for a diff-test) can be usefull under circumstances, but should by means be avoided to make a clear differentiation.
+
+diff-tests:
+
+diff-tests provide an opportunity to test the test environments of the particular programming language, as the test environment can not test itself because of reasons corresonding to the chicken or the egg dilemma.
+
+diff-tests need backreferences for better being able to find the location in the code if an error occurs. This means that there have to be given markers or line-numbers for each test, which then occur in the output and for the case of an error are uncovered by diff. 
+
+pl-tests:
+
+pl-tests are realized by testroutines in the according programming language. the testsymbol is always given only one value, which is either true or false. In programming languages, in which such symbols do not exist, there have to be defined and used alternative values. Therefore there first has to be programmed a function "test", that has to provide an error message on a given False, from which the location of the error and in case the reason for the error can be investigated.
+ also negative test have to provide a True on for a successful Fail / an Exception, does the Fail stay out, False must be put out.
+
+The tests must not endager the host system, none of them.
+
+Architecture:
+
+ testaufbau:
+ test set-up:
+ Each testfile is named by the symbols or themes to be tested. If several symbols are used and are explained in this context, there have to be created corresponding links to the testfile for the rest of the symbols.
+
+
+Each testfile begins with the presentation of the symbols to be tested. This can imply that first the types of symbols (in testform) are presented. (For example, java: test( "" instanceof String), clisp: (test '(eq 'SIMPLE-BASE-STRING (car (type-of "")))))
+after that only that many tests follow, so that function and possible side effects and specialities become visible. At the end of each test follow cross references to similar or a functional group of corresponding symbols.
+
+ Directories:
+ It is furthermore necessary to distinguish if a test of a language / API tests a certain implememtation or a standard. Dealing with an impementation there can be symbols being tested which are not contained in the standard. For example within the direcory clisp the common-lisp of the same name implementation is tested. Thus there has to be a directory common-lisp, in which only the standard-symbols are tested. the testfunction in clisp is permitted to use clisp-specific symbols. If a language implements a standard, there has to be a referring symbolic link "implements-standard" to this directory, for the standard-tests being possibly tested with the corresponding specific tests.
+
+/<language-implementation>/<symbol|topic>.<pl-extension>
+/<language-implementation>/implements-standard ->../<language-standard>
+/<language-standard>
+/<language-standard>/<symbol|topic>.<pl-extension>
+/lib ... diff-test routines
+/languages-compared
+
+Cross-references between programming languages:
+
+There should exist a further directory languages-compared, which shows cross-references between functionally identical or similar symbols and complete expressions. 
+At the end of the testfiles in the programming language directories there can follow cross references to other programming language directories.
+
+Status:
+
+At current time there exist tests for the common Lisp Implementation clisp under /clisp, first comparing files under /#languages-compared and an example for a testprogram under /lib.
+
+Further fields of application:
+
+Support for the error search
+If you are dealing with a new version of a programming language or from another distributor, it can happen, that certain testcases do not work any more - Cases, in which you had trusted while programming in other projects. So you can find errors by running the testsuite on the changed language/API, that then can appear in already existing programs.
+
+ The projekt can become a valuable database of source code, if big enough of size.
+
+Code as dokumentation
+
+TODO:
+
+ clisp:
+   - Comparison of the number of positive testruns and sollwert
+   - Better architekture for also doing more or all testruns at the same time.

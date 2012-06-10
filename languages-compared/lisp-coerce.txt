@@ -1,0 +1,5 @@
+lisp: (floor 3.2) => (values 3 0.2)
+scheme: (inexact->exact (floor 3.2)) => 3
+
+lisp: (coerce '(1 2 3) 'vector)
+scheme: (list->vector '(1 2 3))

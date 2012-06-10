@@ -1,0 +1,19 @@
+<?xml version='1.0'?>
+<testdata testattribute="test">
+ <node-parent-1>
+  <node-parent-2>
+   <node-preceding-1/>
+   <node-preceding-2/>
+   <node-self>
+    <node-child-1/>
+    <node-child-2>
+     <node-child-2-1/>
+     <node-child-2-2/>
+    </node-child-2>
+    <node-child-3/>
+   </node-self>
+   <node-following-1/>
+   <node-following-2/>
+  </node-parent-2>
+ </node-parent-1>
+</testdata>

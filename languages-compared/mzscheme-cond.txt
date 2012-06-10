@@ -1,0 +1,8 @@
+mzscheme: (cond)
+lisp: (cond)
+
+mzscheme: (cond [1 => add1]) => 2
+
+scheme: (cond (1 1))
+lisp: (cond (1 1))
+

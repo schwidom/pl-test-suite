@@ -1,0 +1,14 @@
+lisp: (case 'x (('y 'x) 1) (otherwise 2)) => 2
+scheme: (case 'x (('y 'x) 1) (else 2)) => 2
+
+lisp: (case 'x (('y 'x) 1)) => NIL
+scheme: (case 'x (('y 'x) 1)) => 
+
+lisp: (case 10 ((9 10) 1)) => 1
+scheme: (case 10 ((9 10) 1)) => 1
+
+lisp: (case 'a ('b 1)('a 2)) => 2
+scheme: (case 'a ('b 1)('a 2)) => 2
+
+bash: case 2 in 1) echo 1;; *) echo "else" ;;esac => else
+bash: case 1 in 1) echo 1;; *) echo "else" ;;esac => 1

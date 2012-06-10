@@ -1,0 +1,25 @@
+
+# proposed schema for the testing sequence
+
+# synonyms: vector, list
+
+# creation
+
+# type identification
+
+# length
+
+# indexing
+
+# copying
+
+# comparing
+
+# inserting
+
+# appending
+
+# removing
+
+# sorting
+

@@ -1,0 +1,4 @@
+RSYNC_WORK=rsync-work
+rm -rf $RSYNC_WORK
+mkdir $RSYNC_WORK
+cd $RSYNC_WORK
