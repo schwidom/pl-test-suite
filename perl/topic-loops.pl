@@ -14,19 +14,25 @@ use testdata ;
 
 checkComplainAndAdjustExpected 0;
 
+{
+
 my @array= ( "a a", "b c");
 
 my @array_res1;
 
 while( <@array>){ push @array_res1, $_}
 
-test "a-a-b-c" == join "-", @array_res1;
+test "a-a-b-c" eq join "-", @array_res1;
 
 foreach( @array){ push @array_res1, $_}
 
-test "a a-b c" == join "-", @array_res1;
+test "a-a-b-c-a a-b c" eq join "-", @array_res1;
 
 checkComplainAndAdjustExpected 2;
+
+}
+
+{
 
 my @array=@testdata::array;
 
@@ -41,6 +47,8 @@ foreach( @array) # substitute operations change the foreach array
 test "4-99-101-7" eq join "-", @array;
 
 checkComplainAndAdjustExpected 2;
+
+}
 
 println result()
 

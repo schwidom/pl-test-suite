@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include <string.h>
 
 #include "testenv.h"
+
+
 
 int main( int argc, char** argv)
 {

@@ -15,7 +15,8 @@ use testdata ;
 checkComplainAndAdjustExpected 0;
 
 
-test( 3 == $#{@$testdata::array_ref});
+# test( 3 == $#{@$testdata::array_ref}); # Can't use string ("4") as an ARRAY ref while "strict refs" in use
+test( 3 == $#{\@$testdata::array_ref});
 
 test( 3 == $#testdata::array);
 

@@ -15,10 +15,11 @@ sub println
 sub test
 {
 
- $b= shift @_;
+ my $ox_b= shift @_; # b kollidiert, siehe perlvar, ox_ ist sicher
+
  shift @_ && die "test: more than 1 parameter, exiting";
 
- if( $b)
+ if( $ox_b)
  {
   $countOk+= 1;
  }
@@ -33,20 +34,20 @@ sub test
 sub checkComplainAndAdjustExpected
 {
  
- my $count= shift @_;
+ my $ox_count= shift @_;
 
  my $countTests= $countOk + $countFail;
  my $countTestsLocal= $countTests - $countLatest;
 
  $countLatest= $countTests;
 
- if( $count == $countTestsLocal)
+ if( $ox_count == $countTestsLocal)
  {
   return 1
  }
  else
  {
-  println "Expected Test Count (from last checkpoint to here) doesn't match: \$countTestsLocal: $countTestsLocal \$count: $count";
+  println "Expected Test Count (from last checkpoint to here) doesn't match: \$countTestsLocal: $countTestsLocal \$count: $ox_count";
   return 0
  }
  

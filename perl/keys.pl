@@ -23,3 +23,5 @@ checkComplainAndAdjustExpected 2;
 
 println result()
 
+# see also: hash.pl, keys.pl, values.pl
+

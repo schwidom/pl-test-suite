@@ -16,6 +16,7 @@ checkComplainAndAdjustExpected 0;
 
 =begin
  this is a comment too
+ see also: man perlpod , PERLPOD(1) 
 =cut
 
 checkComplainAndAdjustExpected 0;

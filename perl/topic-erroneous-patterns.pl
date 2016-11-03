@@ -14,12 +14,15 @@ use testdata ;
 
 checkComplainAndAdjustExpected 0;
 
+{
 my $a=1 if( undef); # not defined, see man perlsyn
 test not $a;
+}
 
+{
 my $a=1 if( 1); # not defined, see man perlsyn
 test $a;
-
+}
 
 
 checkComplainAndAdjustExpected 2;
