@@ -23,10 +23,11 @@ int main( int argc, char** argv)
  test( 0 == "1\0"[1]);
  test( 0 == "1\00"[1]);
  test( 0 == "1\000"[1]);
+ test( 0 == "1\000"[2]);
  test( 0 == "1\0000"[1]);
- test( 0 == "1\0000000000000000000"[1]);
+ test( '0' == "1\0000"[2]); // oktal 0, danach char 0
 
- checkComplainAndAdjustExpected( 5);
+ checkComplainAndAdjustExpected( 6);
 
  test( 2 == "1\2"[1]);
  test( 2 == "1\02"[1]);
