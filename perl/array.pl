@@ -29,6 +29,9 @@ test 6 == ${[4, 5, 6]}[2]; # ?
 test @{[1, 2, 3]} == @{[1, 2, 3]};
 test @{[1, 2, 3]} == @{[1, 2, 4]}; # dont compare arrays in this way (== leads to scalar context)
 
+# test @{[1, 2, 3]} ~~ @{[1, 2, 3]}; # Smartmatch is experimental
+# test not @{[1, 2, 3]} ~~ @{[1, 2, 4]}; # Smartmatch is experimental
+
 test \@{[1, 2, 3]} != \@{[1, 2, 3]};
 test \@{[1, 2, 3]} != \@{[1, 2, 4]}; 
 
