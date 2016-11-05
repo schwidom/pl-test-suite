@@ -3,47 +3,47 @@ main :-
 
  string_to_list( STRING_ABC, "abc"),
 
- consult( testenv),
+ consult( testenv_V2),
 
  checkComplainAndAdjustExpected( 0),
 
- (integer( 9) -> testOk; testFail),
- (integer( 9.0) -> testFail; testOk),
+ test( ( integer( 9) ) ),
+ test( \+ ( integer( 9.0) ) ),
 
- (number( 9) -> testOk; testFail),
- (number( 9.0) -> testOk; testFail),
+ test( ( number( 9) ) ),
+ test( ( number( 9.0) ) ),
 
- (float( 9) -> testFail; testOk),
- (float( 9.0) -> testOk; testFail),
+ test( \+ ( float( 9) ) ),
+ test( ( float( 9.0) ) ),
 
- (is_list( "abc") -> testOk; testFail),
- (is_list( 'abc') -> testFail; testOk),
+ test( ( is_list( "abc") ) ),
+ test( \+ ( is_list( 'abc') ) ),
 
- (string( STRING_ABC) -> testOk; testFail),
- (string( "abc") -> testFail; testOk),
+ test( ( string( STRING_ABC) ) ),
+ test( \+ ( string( "abc") ) ),
  
- (atom( abc) -> testOk; testFail),
- (atom( 'abc') -> testOk; testFail),
- (atom( STRING_ABC) -> testFail; testOk),
+ test( ( atom( abc) ) ),
+ test( ( atom( 'abc') ) ),
+ test( \+ ( atom( STRING_ABC) ) ),
 
- (callable( abc) -> testOk; testFail),
- (callable( abc(_)) -> testOk; testFail),
+ test( ( callable( abc) ) ),
+ test( ( callable( abc(_)) ) ),
 
- (compound( abc(_)) -> testOk; testFail),
+ test( ( compound( abc(_)) ) ),
 
- (ground( abc) -> testOk; testFail),
- (ground( abc(_)) -> testFail; testOk),
- (ground( abc(d)) -> testOk; testFail),
+ test( ( ground( abc) ) ),
+ test( \+ ( ground( abc(_)) ) ),
+ test( ( ground( abc(d)) ) ),
 
- (atomic( abc) -> testOk; testFail),
- (atomic( 'abc') -> testOk; testFail),
- (atomic( STRING_ABC) -> testOk; testFail),
- (atomic( "abc") -> testFail; testOk),
- (atomic( abc(_)) -> testFail; testOk),
+ test( ( atomic( abc) ) ),
+ test( ( atomic( 'abc') ) ),
+ test( ( atomic( STRING_ABC) ) ),
+ test( \+ ( atomic( "abc") ) ),
+ test( \+ ( atomic( abc(_)) ) ),
 
  CT=ct(CT),
- (cyclic_term( CT) -> testOk; testFail),
- (cyclic_term( ct( 1)) -> testFail; testOk),
+ test( ( cyclic_term( CT) ) ),
+ test( \+ ( cyclic_term( ct( 1)) ) ),
 
  checkComplainAndAdjustExpected( 26),
 

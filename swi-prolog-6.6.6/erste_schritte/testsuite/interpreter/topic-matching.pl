@@ -1,15 +1,15 @@
 
 main :- 
 
- consult( testenv),
+ consult( testenv_V2),
 
  checkComplainAndAdjustExpected( 0),
 
- ( ( A1 = B1) = ( 1 = 2), 1 = A1, 2 = B1 -> testOk; testFail),
+ test( ( ( A = B) = ( 1 = 2), 1 = A, 2 = B ) ),
 
- ( A2 + B2 = 3 + 4, 3 = A2, 4 = B2 -> testOk; testFail),
+ test( ( A + B = 3 + 4, 3 = A, 4 = B ) ),
 
- ( A3 = a(5, b(6)), A3= a( B3, b( C3)), 5 = B3, 6 = C3 -> testOk; testFail),
+ test( ( A = a(5, b(6)), A= a( B, b( C)), 5 = B, 6 = C ) ),
 
  checkComplainAndAdjustExpected( 3),
 

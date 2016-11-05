@@ -22,7 +22,7 @@ main :-
 
  ( d( L2, [ z2]) -> [ w2, x2, y2, z2]= L2, testOk; testFail),
  ( d( [ w2, x2, y2, z2], L3) -> [ z2]= L3, testOk; testFail),
- ( d( [ w2, q2, y2, z2], L3) -> testFail; testOk),
+ ( d( [ w2, q2, y2, z2], _L4) -> testFail; testOk),
 
  checkComplainAndAdjustExpected( 6),
 
