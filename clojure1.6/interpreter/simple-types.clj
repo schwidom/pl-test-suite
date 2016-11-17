@@ -14,6 +14,7 @@
 (teTest (= java.lang.Class (type (type 1))))
 (teTest (= java.lang.Class (type java.lang.Long)))
 
+(teTest (string? "1"))
 (teTest (integer? 1))
 (teTest (rational? 1))
 (teTest (rational? 1/2))
@@ -38,6 +39,6 @@
 (teTest (= clojure.lang.Ratio (type 1/2)))
 (teTest (= java.lang.String (type "1")))
 
-(checkComplainAndAdjustExpected 26)
+(checkComplainAndAdjustExpected 27)
 
 (println (teResult))
