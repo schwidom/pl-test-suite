@@ -17,7 +17,7 @@ checkComplainAndAdjustExpected( Count) :- true
  , CountTests is CountOk + CountFail
  , CountTestsLocal is CountTests - CountLatest
 
- , assertz( teststate( CountOk, CountFail, CountTests))
+ % , assertz( teststate( CountOk, CountFail, CountTests))
 
  % , nb_setval( countOk, CountOk)
  % , nb_setval( countFail, CountFail)
