@@ -1,5 +1,5 @@
 
-(ns skeleton
+(ns simple-types
  (:use testenv)
 )
 
@@ -15,8 +15,11 @@
 
 (teTest (nil? nil))
 (teTest (symbol? 'a))
+(teTest (list? ''a)) ; 1ewdlgrty3 
 (teTest (integer? '1))
+(teTest (keyword? ::a))
 (teTest (keyword? :a))
+(teTest (keyword? :'a))
 (teTest (keyword? :1))
 (teTest (string? "1"))
 (teTest (integer? 1))
@@ -36,6 +39,17 @@
 (teTest (= 1. (float 1)))
 (teTest (not (= 1 (float 1))))
 
+(teTest (= :simple-types/a ::a))
+
+; 1ewdlgrty3 : ; todo: quote.clj
+(teTest (= 'a (nth ''a 1)))
+(teTest (= 'quote (nth ''a 0)))
+(teTest (= ''a (quote 'a)))
+(teTest (= ''a '(quote a)))
+(teTest (= ''a (quote (quote a))))
+(teTest (= ''a (list 'quote 'a)))
+(teTest (= 'a (quote a)))
+
 (teTest (= 1 (Integer. "1")))
 (teTest (= 1. (Double. "1")))
 
@@ -44,6 +58,7 @@
 ; (new nil); CompilerException java.lang.IllegalArgumentException: Unable to resolve classname: null
 
 (teTest (= clojure.lang.Symbol (type 'a)))
+(teTest (= clojure.lang.PersistentList (type ''a)))
 (teTest (= clojure.lang.Keyword (type :a)))
 (teTest (= java.lang.Long (type 1)))
 (teTest (= java.lang.Double (type 1.1)))
@@ -53,6 +68,6 @@
 (teTest (= java.lang.Class (type (type 1))))
 (teTest (= java.lang.Class (type java.lang.Long)))
 
-(checkComplainAndAdjustExpected 37)
+(checkComplainAndAdjustExpected 49)
 
 (println (teResult))
