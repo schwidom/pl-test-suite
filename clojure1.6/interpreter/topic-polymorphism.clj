@@ -23,9 +23,28 @@
 
 (teTest (= (f2 1 [2 3]) "case1 : 1 2 3"))
 
-(checkComplainAndAdjustExpected 4)
+; (defmulti f3 (fn [x] [(:key1 x) (:key2 x)]))
+; (defmethod f3 [1 2] [a b] (+ a b))
+
+(defmulti f3 (fn [x] [(:k x)]))
+(defmethod f3 [:a] [key] 2)
+(defmethod f3 [:b] [key] 3)
+
+(teTest (= 2 (f3 {:k :a})))
+(teTest (= 3 (f3 {:k :b})))
+
+
+(defmulti f4 (fn [x y] [(:k1 x) (:k2 y)]))
+(defmethod f4 [:a :a] [key1 key2] (str "case1 " key1 " " key2))
+
+(teTest (= "case1 {:k1 :a} {:k2 :a}" (f4 {:k1 :a} {:k2 :a})))
+(teTest (= "case1 {:kx :x, :k1 :a} {:k2 :a, :ky :y}" (f4 {:k1 :a :kx :x} {:k2 :a :ky :y})))
+; (teTest (= nil (f4 {:k1 :b} {:k2 :a}))) ; No method in multimethod 'f4' for dispatch value: [:b :a]
+; (teTest (= nil (f4 {:k3 :a} {:k2 :a}))) ; No method in multimethod 'f4' for dispatch value: [nil :a]
+
+(checkComplainAndAdjustExpected 8)
 
 (println (teResult))
 
-; see also: topic-polymorphism.clj defn.clj fn.clj 
+; see also: topic-polymorphism.clj defn.clj fn.clj defmulti.clj defmethod.clj
 
