@@ -20,6 +20,7 @@
 (teTest (keyword? ::a))
 (teTest (keyword? :a))
 (teTest (keyword? :'a))
+(teTest (keyword? :'))
 (teTest (keyword? :1))
 (teTest (string? "1"))
 (teTest (integer? 1))
@@ -72,6 +73,6 @@
 (teTest (= java.lang.Class (type (type 1))))
 (teTest (= java.lang.Class (type java.lang.Long)))
 
-(checkComplainAndAdjustExpected 53)
+(checkComplainAndAdjustExpected 54)
 
 (println (teResult))
