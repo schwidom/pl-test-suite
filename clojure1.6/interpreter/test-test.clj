@@ -1,5 +1,5 @@
 
-(ns test-test
+(ns test-test-test
  (:use testenv)
 )
 

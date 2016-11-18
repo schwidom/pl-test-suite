@@ -1,5 +1,5 @@
 
-(ns skeleton
+(ns skeleton-test
  (:use testenv)
 )
 

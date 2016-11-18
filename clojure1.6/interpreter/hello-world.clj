@@ -1,5 +1,5 @@
 
-(ns hello-world
+(ns hello-world-test
  (:use testenv)
 )
 

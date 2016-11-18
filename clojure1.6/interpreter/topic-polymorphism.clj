@@ -1,6 +1,6 @@
 
 
-(ns topic-polymorphism
+(ns topic-polymorphism-test
  (:use testenv)
 )
 

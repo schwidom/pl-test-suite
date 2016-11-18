@@ -1,5 +1,5 @@
 
-(ns ns1
+(ns ns1-test
  (:use testenv)
  (:use testdata)
 )

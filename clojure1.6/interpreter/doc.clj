@@ -1,6 +1,6 @@
 
 
-(ns doc
+(ns doc-test
  (:use clojure.repl)
  (:use testenv)
 )
@@ -11,7 +11,7 @@
 
 (teTest (= (with-out-str (doc var_1))
 "-------------------------
-doc/var_1
+doc-test/var_1
   docstring variable var_1
 "
 ))
@@ -24,7 +24,7 @@ doc/var_1
 
 (teTest (= (with-out-str (doc f1)) 
 "-------------------------
-doc/f1
+doc-test/f1
 ([])
   docstring function f1
 "))
@@ -34,7 +34,7 @@ doc/f1
 
 (teTest (= (with-out-str (doc m1)) 
 "-------------------------
-doc/m1
+doc-test/m1
 ([])
 Macro
   docstring macro f1

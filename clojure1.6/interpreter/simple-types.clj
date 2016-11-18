@@ -1,5 +1,5 @@
 
-(ns simple-types
+(ns simple-types-test
  (:use testenv)
 )
 
@@ -39,7 +39,7 @@
 (teTest (= 1. (float 1)))
 (teTest (not (= 1 (float 1))))
 
-(teTest (= :simple-types/a ::a))
+(teTest (= :simple-types-test/a ::a))
 
 ; 1ewdlgrty3 : ; todo: quote.clj
 (teTest (= 'a (nth ''a 1)))
@@ -61,6 +61,10 @@
 (teTest (= clojure.lang.PersistentList (type ''a)))
 (teTest (= clojure.lang.Keyword (type :a)))
 (teTest (= java.lang.Long (type 1)))
+(teTest (= clojure.lang.BigInt (type 1N)))
+(teTest (= clojure.lang.BigInt (type (bigint 1))))
+(teTest (= java.math.BigInteger (type (biginteger 1))))
+(teTest (= java.math.BigDecimal (type (bigdec 1))))
 (teTest (= java.lang.Double (type 1.1)))
 (teTest (= clojure.lang.Ratio (type 1/2)))
 (teTest (= java.lang.String (type "1")))
@@ -68,6 +72,6 @@
 (teTest (= java.lang.Class (type (type 1))))
 (teTest (= java.lang.Class (type java.lang.Long)))
 
-(checkComplainAndAdjustExpected 49)
+(checkComplainAndAdjustExpected 53)
 
 (println (teResult))

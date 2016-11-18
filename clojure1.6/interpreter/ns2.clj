@@ -1,6 +1,6 @@
 
 
-(ns ns2
+(ns ns2-test
  (:use testenv)
 )
 

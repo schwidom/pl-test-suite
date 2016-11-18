@@ -1,6 +1,6 @@
 
 
-(ns cons
+(ns cons-test
  (:use testenv)
 )
 
