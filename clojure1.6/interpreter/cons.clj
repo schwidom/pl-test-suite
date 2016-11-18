@@ -1,6 +1,6 @@
 
 
-(ns skeleton
+(ns cons
  (:use testenv)
 )
 
@@ -46,5 +46,5 @@
 
 (println (teResult))
 
-; see also: list.clj, first.clj, rest.clj, second.clj
+; see also: cons.clj list.clj first.clj rest.clj second.clj
 
