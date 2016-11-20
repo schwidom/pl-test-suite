@@ -38,6 +38,9 @@
 (teTest (not (.equals '() nil))) ; 11v1smec97
 (teTest (ide (.equals '() []))) ; ds15wqov6l 
 
+
+(teTest (not (identical? (cons 1 nil) (cons 1 nil))))
+
 (teTest (ide (.equals '(1) '(1)))) ; ds15wqov6l
 (teTest (ide (.equals [1] [1]))) ; ds15wqov6l 
 (teTest (ide (.equals {:a 1} {:a 1}))) ; ds15wqov6l 
@@ -50,7 +53,7 @@
 (teTest (not (.equals :a ::a)))
 (teTest (not (.equals false true)))
 
-(checkComplainAndAdjustExpected 27)
+(checkComplainAndAdjustExpected 28)
 
 (println (teResult))
 

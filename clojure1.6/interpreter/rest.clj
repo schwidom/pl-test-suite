@@ -1,6 +1,6 @@
 
 
-(ns first-test
+(ns rest-test
  (:use testenv)
 )
 
@@ -15,6 +15,14 @@
 (teTest (= '(3 2) (rest #{1 2 3}))) ; ?
 (teTest (= clojure.lang.APersistentMap$KeySeq (type (rest #{1 2 3}))))
 
-(checkComplainAndAdjustExpected 8)
+
+; differs from next.clj
+
+(teTest (= '() (rest '(1))))
+(teTest (= '() (rest [1])))
+(teTest (= '() (rest {:a 1})))
+(teTest (= '() (rest #{1})))
+
+(checkComplainAndAdjustExpected 12)
 
 (println (teResult))

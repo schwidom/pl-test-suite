@@ -46,5 +46,5 @@
 
 (println (teResult))
 
-; see also: cons.clj list.clj first.clj rest.clj second.clj
+; see also: cons.clj topic-list-types.clj first.clj second.clj rest.clj next.clj
 

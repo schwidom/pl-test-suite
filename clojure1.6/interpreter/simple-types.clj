@@ -33,11 +33,17 @@
 (teTest (not (float? (rationalize 1.1))))
 (teTest (identity (rational? (rationalize 1.1))))
 
+(teTest (= :a (keyword "a")))
+(teTest (= ::a (keyword "simple-types-test/a")))
+(teTest (= 'a (symbol "a")))
+
 (teTest (= "1" (str 1)))
 (teTest (= "1.1" (str 1.1)))
 (teTest (= "1/2" (str 1/2)))
+
 (teTest (= 1 (long 1.1)))
 (teTest (= 1. (float 1)))
+
 (teTest (not (= 1 (float 1))))
 
 (teTest (= :simple-types-test/a ::a))
@@ -61,6 +67,8 @@
 (teTest (= clojure.lang.Symbol (type 'a)))
 (teTest (= clojure.lang.PersistentList (type ''a)))
 (teTest (= clojure.lang.Keyword (type :a)))
+(teTest (= java.util.regex.Pattern (type #"a")))
+
 (teTest (= java.lang.Long (type 1)))
 (teTest (= clojure.lang.BigInt (type 1N)))
 (teTest (= clojure.lang.BigInt (type (bigint 1))))
@@ -73,6 +81,6 @@
 (teTest (= java.lang.Class (type (type 1))))
 (teTest (= java.lang.Class (type java.lang.Long)))
 
-(checkComplainAndAdjustExpected 54)
+(checkComplainAndAdjustExpected 58)
 
 (println (teResult))
