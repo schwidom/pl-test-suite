@@ -10,12 +10,10 @@
 
 ; (teTest (= '(1.0 2.6) (vector-of :float 1 2.6)))
 
-(teTest (= '(false true true true) (vector-of :boolean false 0 2.6 "")))
+(teTest (= '(false false true true true true true true) (vector-of :boolean false nil '() :a 'a 0 2.6 "")))
 
-(teTest (= [\0 \1 \2] (vector-of :char 48 49 50))) ; todo
+(teTest (= [\0 \1 \2] (vector-of :char 48 49 50))) 
 
-(teTest (= java.lang.Character (type \0)))
-
-(checkComplainAndAdjustExpected 4)
+(checkComplainAndAdjustExpected 3)
 
 (println (teResult))

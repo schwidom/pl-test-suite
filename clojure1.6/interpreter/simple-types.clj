@@ -68,6 +68,7 @@
 (teTest (= clojure.lang.PersistentList (type ''a)))
 (teTest (= clojure.lang.Keyword (type :a)))
 (teTest (= java.util.regex.Pattern (type #"a")))
+(teTest (= java.lang.Character (type \a)))
 
 (teTest (= java.lang.Long (type 1)))
 (teTest (= clojure.lang.BigInt (type 1N)))
@@ -81,6 +82,6 @@
 (teTest (= java.lang.Class (type (type 1))))
 (teTest (= java.lang.Class (type java.lang.Long)))
 
-(checkComplainAndAdjustExpected 58)
+(checkComplainAndAdjustExpected 59)
 
 (println (teResult))
