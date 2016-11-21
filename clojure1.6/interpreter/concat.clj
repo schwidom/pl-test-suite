@@ -7,6 +7,8 @@
 
 (teTest (= '(1 2 3 4) (concat [1 2] [3 4])))
 
+(teTest (= '(1 2 3 4) (concat [1] [2 3] [4])))
+
 (teTest (= '(1 2 3 4) (concat '(1 2) '(3 4))))
 
 (teTest (= '(1 2 3 4) (concat [1 2] '(3 4))))
@@ -19,6 +21,7 @@
 
 (teTest (= '(1 2 4 3) (concat [1 2] #{3 4}))) ; ?
 
-(checkComplainAndAdjustExpected 7)
+(checkComplainAndAdjustExpected 8)
 
 (println (teResult))
+

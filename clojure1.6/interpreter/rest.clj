@@ -24,6 +24,7 @@
 (teTest (= '() (rest #{1})))
 
 ; see also: drop.clj rest.clj next.clj
+; see also: first.clj second.clj last.clj rest.clj
 
 (checkComplainAndAdjustExpected 12)
 

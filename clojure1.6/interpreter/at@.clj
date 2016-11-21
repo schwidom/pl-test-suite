@@ -15,6 +15,8 @@
 
 (teTest (= 6 (m [1 2 3])))
 
-(checkComplainAndAdjustExpected 4)
+(teTest (= 6 (let [l [1 2 3]] (eval `(+ ~@l))) ))
+
+(checkComplainAndAdjustExpected 5)
 
 (println (teResult))
