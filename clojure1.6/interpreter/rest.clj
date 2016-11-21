@@ -23,6 +23,8 @@
 (teTest (= '() (rest {:a 1})))
 (teTest (= '() (rest #{1})))
 
+; see also: drop.clj rest.clj next.clj
+
 (checkComplainAndAdjustExpected 12)
 
 (println (teResult))
