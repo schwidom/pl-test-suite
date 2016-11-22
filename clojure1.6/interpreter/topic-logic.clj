@@ -31,3 +31,5 @@
 (checkComplainAndAdjustExpected 3)
 
 (println (teResult))
+
+; d6esk5s453 ; see also: or.clj and.clj not.clj topic-logic.clj
