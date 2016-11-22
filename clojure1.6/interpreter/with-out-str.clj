@@ -15,3 +15,6 @@
 (checkComplainAndAdjustExpected 3)
 
 (println (teResult))
+
+; h9o7bq5hnc ; see also: doc.clj source.clj with-out-str.clj
+

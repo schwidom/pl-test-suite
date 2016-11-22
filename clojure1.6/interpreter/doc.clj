@@ -45,5 +45,5 @@ Macro
 
 (println (teResult))
 
-; see also: doc.clj source.clj with-out-str.clj
+; h9o7bq5hnc ; see also: doc.clj source.clj with-out-str.clj
 

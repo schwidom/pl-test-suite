@@ -14,7 +14,7 @@
 (teTest (= 3 (reduce + [1 2])))
 (teTest (= 13 (reduce + 10 [1 2])))
 
-; see also areduce.clj reduce.clj
+; etyc439hrp ; see also: areduce.clj reduce.clj
 
 (checkComplainAndAdjustExpected 6)
 

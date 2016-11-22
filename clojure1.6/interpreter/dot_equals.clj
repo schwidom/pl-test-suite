@@ -57,4 +57,4 @@
 
 (println (teResult))
 
-; see also dot_equals.clj identical?.clj
+; 3rz4essgzj ; see also: dot_equals.clj identical?.clj

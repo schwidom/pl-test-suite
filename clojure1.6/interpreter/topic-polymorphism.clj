@@ -56,5 +56,5 @@
 
 (println (teResult))
 
-; see also: topic-polymorphism.clj defn.clj fn.clj defmulti.clj defmethod.clj
+; z6bud4wslo ; see also: topic-polymorphism.clj defn.clj fn.clj defmulti.clj defmethod.clj
 

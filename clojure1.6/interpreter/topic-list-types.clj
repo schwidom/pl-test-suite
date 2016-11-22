@@ -88,3 +88,6 @@
 (checkComplainAndAdjustExpected 57)
 
 (println (teResult))
+
+; ovmbllmxt4 ; see also: cons.clj topic-list-types.clj first.clj second.clj rest.clj next.clj
+

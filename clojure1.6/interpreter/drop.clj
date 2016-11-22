@@ -22,7 +22,7 @@
 (teTest (= '() (drop 1 {:a 1})))
 (teTest (= '() (drop 1 #{1})))
 
-; see also: drop.clj rest.clj next.clj
+; c0phq1uqc2 ; see also: first.clj second.clj last.clj rest.clj drop.clj next.clj drop-last.clj butlast.clj fnext.clj
 
 (checkComplainAndAdjustExpected 12)
 

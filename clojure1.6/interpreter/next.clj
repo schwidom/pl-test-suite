@@ -22,7 +22,8 @@
 (teTest (= nil (next {:a 1})))
 (teTest (= nil (next #{1})))
 
-; see also: drop.clj rest.clj next.clj
+; c0phq1uqc2 ; see also: first.clj second.clj last.clj rest.clj drop.clj next.clj drop-last.clj butlast.clj fnext.clj
+; ovmbllmxt4 ; see also: cons.clj topic-list-types.clj first.clj second.clj rest.clj next.clj
 
 (checkComplainAndAdjustExpected 12)
 

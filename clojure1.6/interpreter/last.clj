@@ -11,7 +11,7 @@
 (teTest (= [:a 1] (last {:a 1 :b 2 :c 3}))) ; ? 
 (teTest (= 2 (last #{1 2 3}))) ; ?
 
-; see also: first.clj second.clj last.clj rest.clj
+; c0phq1uqc2 ; see also: first.clj second.clj last.clj rest.clj drop.clj next.clj drop-last.clj butlast.clj fnext.clj
 
 (checkComplainAndAdjustExpected 4)
 

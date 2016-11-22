@@ -20,7 +20,7 @@
 (teTest (= 3 (areduce a i r 0 (+ r (nth a i)))))
 (teTest (= 13 (areduce a i r 10 (+ r (nth a i)))))
 
-; see also areduce.clj reduce.clj
+; etyc439hrp ; see also: areduce.clj reduce.clj
 
 (checkComplainAndAdjustExpected 6)
 
