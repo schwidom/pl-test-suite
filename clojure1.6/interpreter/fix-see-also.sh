@@ -9,7 +9,7 @@ CURRENT_LINE="tmp/current-line.txt"
 
 cat <<EOF >"${SEE_ALSO_LINES}"
 ; 3rz4essgzj ; see also: dot_equals.clj identical?.clj
-; c0phq1uqc2 ; see also: first.clj second.clj last.clj rest.clj drop.clj next.clj drop-last.clj butlast.clj fnext.clj
+; c0phq1uqc2 ; see also: first.clj second.clj last.clj rest.clj drop.clj next.clj drop-last.clj butlast.clj fnext.clj take.clj
 ; etyc439hrp ; see also: areduce.clj reduce.clj
 ; h9o7bq5hnc ; see also: doc.clj source.clj with-out-str.clj
 ; ovmbllmxt4 ; see also: cons.clj topic-list-types.clj first.clj second.clj rest.clj next.clj

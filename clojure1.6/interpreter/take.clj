@@ -1,22 +1,38 @@
 
+
 (ns take-test
  (:use testenv)
 )
 
 (checkComplainAndAdjustExpected 0)
 
-(teTest (= '(0 1 2) (range 0 3)))
+(teTest (= '(1 2) ( take 2 '(1 2 3))))
+(teTest (= clojure.lang.LazySeq (type ( take 2 '(1 2 3)))))
+(teTest (= '(1 2) ( take 2 [1 2 3])))
+(teTest (= clojure.lang.LazySeq (type ( take 2 [1 2 3]))))
+(teTest (= '([:c 3] [:b 2] ) ( take 2 {:a 1 :b 2 :c 3}))) ; ? 
+(teTest (= clojure.lang.LazySeq (type ( take 2 {:a 1 :b 2 :c 3})))) 
+(teTest (= '(1 3) ( take 2 #{1 2 3}))) ; ?
+(teTest (= clojure.lang.LazySeq (type ( take 2 #{1 2 3}))))
 
-(teTest (= '(0 1 2) (take 3 (range 0 3))))
+; differs from next.clj
 
-(teTest (= '(0 1 2) (take 3 (range 0 10))))
+(teTest (= '() ( take 0 '(1))))
+(teTest (= '() ( take 0 [1])))
+(teTest (= '() ( take 0 {:a 1})))
+(teTest (= '() ( take 0 #{1})))
 
-(teTest (= '() (take -1 (range 0 3))))
-(teTest (= '() (take 0 (range 0 3))))
-(teTest (= '(0 1 2) (take 4 (range 0 3))))
+; c0phq1uqc2 ; see also: first.clj second.clj last.clj rest.clj drop.clj next.clj drop-last.clj butlast.clj fnext.clj take.clj
 
-(teTest (= (range 0 10)  (take 10 (range 0 100))))
+(checkComplainAndAdjustExpected 12)
 
-(checkComplainAndAdjustExpected 7)
+(teTest (= '() (take -1 '(0 1 2))))
+(teTest (= '() (take 0 '(0 1 2))))
+(teTest (= '(0) (take 1 '(0 1 2))))
+(teTest (= '(0 1) (take 2 '(0 1 2))))
+(teTest (= '(0 1 2) (take 3 '(0 1 2))))
+(teTest (= '(0 1 2) (take 4 '(0 1 2))))
+
+(checkComplainAndAdjustExpected 6)
 
 (println (teResult))
