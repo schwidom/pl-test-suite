@@ -7,11 +7,16 @@
 
 (teTest (not (= nil false)))
 
+(teTest (= true (if 0 true false)))
+(teTest (= false (if nil true false)))
+(teTest (= false (if false true false)))
+
 (teTest (not nil))
 (teTest (not false))
+(teTest (= false (not true)))
 (teTest (not (not 0)))
 
-(checkComplainAndAdjustExpected 4)
+(checkComplainAndAdjustExpected 8)
 
 (println (teResult))
 
