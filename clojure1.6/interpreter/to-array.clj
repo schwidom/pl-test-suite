@@ -18,12 +18,16 @@
 (teTest (.equals a1 a1))
 (teTest (identical? a1 a1))
 
+(teTest (. java.util.Arrays equals a1 a2)); 
+(teTest (. java.util.Arrays equals a1 a3)); 
+(teTest (. java.util.Arrays deepEquals a1 a2)); 
+(teTest (. java.util.Arrays deepEquals a1 a3)); 
 (teTest (not (= a1 a2))) ; ?
 (teTest (not (.equals a1 a2))) ; ?
 
 (teTest (= "class [Ljava.lang.Object;" (str (type a1))))
 (teTest (= "class [Ljava.lang.Object;" (str (type a3))))
 
-(checkComplainAndAdjustExpected 10)
+(checkComplainAndAdjustExpected 14)
 
 (println (teResult))
