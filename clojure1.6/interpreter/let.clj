@@ -15,4 +15,14 @@
 
 (checkComplainAndAdjustExpected 3)
 
+(teTest (= '(clojure.core/inc (inc 1)) (let [a '(inc 1)] `(inc ~a)) ))
+(teTest (= 3 (eval (let [a '(inc 1)] `(inc ~a))) ))
+
+; wpmxq70uo1 ; see also let.clj defmacro.clj
+
+(checkComplainAndAdjustExpected 2)
+
 (println (teResult))
+
+; udpxmt8cvv ; see also: defmacro.clj macroexpand.clj macroexpand-1.clj eval.clj let.clj binding.clj declare.clj
+

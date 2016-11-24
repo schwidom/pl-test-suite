@@ -35,3 +35,6 @@
 (checkComplainAndAdjustExpected 14)
 
 (println (teResult))
+
+; hyr0blvel9 ; see also defmacro.clj delay-deref-force.clj delay-force.clj realized?.clj ref.clj
+

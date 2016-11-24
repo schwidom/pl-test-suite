@@ -65,6 +65,27 @@
 
 (checkComplainAndAdjustExpected 14)
 
+(def m7_whatis_f ::undefined)
+
+(defmacro m7 [f] (def m7_whatis_f f) f)
+
+(teTest (= 2 (m7 (inc 1))))
+(teTest (= '(inc 1) m7_whatis_f))
+
+; wpmxq70uo1 ; see also let.clj defmacro.clj
+
+(def m8_whatis_f ::undefined)
+(defmacro m8 [f] (def m8_whatis_f f) `(fn [] ~f))
+
+(def m8_pending (m8 (inc 1)))
+(teTest (fn? m8_pending))
+(teTest (= '(inc 1) m8_whatis_f))
+(teTest (= 2 (m8_pending)))
+
+; hyr0blvel9 ; see also defmacro.clj delay-deref-force.clj delay-force.clj realized?.clj ref.clj
+
+(checkComplainAndAdjustExpected 5)
+
 (println (teResult))
 
 ; udpxmt8cvv ; see also: defmacro.clj macroexpand.clj macroexpand-1.clj eval.clj let.clj binding.clj declare.clj

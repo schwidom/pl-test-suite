@@ -17,6 +17,9 @@ cat <<EOF >"${SEE_ALSO_LINES}"
 ; y004gg0rwc ; see also: fn.clj defn.clj
 ; z6bud4wslo ; see also: topic-polymorphism.clj defn.clj fn.clj defmulti.clj defmethod.clj
 ; d6esk5s453 ; see also: or.clj and.clj not.clj topic-logic.clj
+; wpmxq70uo1 ; see also let.clj defmacro.clj
+; hyr0blvel9 ; see also defmacro.clj delay-deref-force.clj delay-force.clj realized?.clj ref.clj
+; k9r43x608g : see also meta.clj namespace.clj
 EOF
 
 if ! test 0 -eq "$( cat "${SEE_ALSO_LINES}" | awk '{print $2}' | sort | uniq -d | wc -l )"; then
