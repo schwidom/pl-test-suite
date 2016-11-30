@@ -5,6 +5,12 @@
 
 (checkComplainAndAdjustExpected 0)
 
+(teTest (= clojure.lang.LazySeq (type (concat))))
+
+(teTest (= '() (concat)))
+
+(teTest (= clojure.lang.LazySeq (type (concat [1 2] [3 4]))))
+
 (teTest (= '(1 2 3 4) (concat [1 2] [3 4])))
 
 (teTest (= '(1 2 3 4) (concat [1] [2 3] [4])))
@@ -21,7 +27,7 @@
 
 (teTest (= '(1 2 4 3) (concat [1 2] #{3 4}))) ; ?
 
-(checkComplainAndAdjustExpected 8)
+(checkComplainAndAdjustExpected 11)
 
 (println (teResult))
 

@@ -1,0 +1,3 @@
+
+(load-file "skeleton.clj")
+

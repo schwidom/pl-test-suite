@@ -86,6 +86,18 @@
 
 (checkComplainAndAdjustExpected 5)
 
+; todo: quote.clj w1bfblyfg5 
+
+(teTest (= '(clojure.core/list) '`()))
+(teTest (= '(clojure.core/seq (clojure.core/concat (clojure.core/list (quote clojure.core/+)))) '`(+)))
+
+(teTest (= '(clojure.core/seq (clojure.core/concat (clojure.core/list (quote clojure.core/+)) (clojure.core/list (quote defmacro-test/a)))) '`(+ a))) 
+(teTest (= '(clojure.core/seq (clojure.core/concat (clojure.core/list (quote clojure.core/+)) (clojure.core/list a))) '`(+ ~a)))
+(teTest (= '(clojure.core/seq (clojure.core/concat (clojure.core/list (quote clojure.core/+)) a)) '`(+ ~@a)))
+
+(checkComplainAndAdjustExpected 5)
+
+
 (println (teResult))
 
 ; udpxmt8cvv ; see also: defmacro.clj macroexpand.clj macroexpand-1.clj eval.clj let.clj binding.clj declare.clj

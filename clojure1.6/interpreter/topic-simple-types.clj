@@ -1,5 +1,5 @@
 
-(ns simple-types-test
+(ns topic-simple-types-test
  (:use testenv)
 )
 
@@ -34,7 +34,7 @@
 (teTest (identity (rational? (rationalize 1.1))))
 
 (teTest (= :a (keyword "a")))
-(teTest (= ::a (keyword "simple-types-test/a")))
+(teTest (= ::a (keyword "topic-simple-types-test/a")))
 (teTest (= 'a (symbol "a")))
 
 (teTest (= "1" (str 1)))
@@ -46,9 +46,9 @@
 
 (teTest (not (= 1 (float 1))))
 
-(teTest (= :simple-types-test/a ::a))
+(teTest (= :topic-simple-types-test/a ::a))
 
-; 1ewdlgrty3 : ; todo: quote.clj
+; 1ewdlgrty3 : ; todo: quote.clj w1bfblyfg5
 (teTest (= 'a (nth ''a 1)))
 (teTest (= 'quote (nth ''a 0)))
 (teTest (= ''a (quote 'a)))
