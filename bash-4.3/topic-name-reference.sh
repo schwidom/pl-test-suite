@@ -33,7 +33,7 @@ tst_checkComplainAndAdjustExpected 0
  tst_test test "m" == "$B"
  tst_test test "m" == "$C"
 
- C="o"
+ A="o"
 
  tst_test test "o" == "$A"
  tst_test test "o" == "$B"
