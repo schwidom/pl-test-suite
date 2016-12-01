@@ -8,6 +8,8 @@ tst_checkComplainAndAdjustExpected 0
 
  ARRAY=( a b c)
 
+ tst_test test "a b c" == "${ARRAY[*]}"
+
  tst_test test "a" == "${ARRAY[ 0 ]}"
  tst_test test "b" == "${ARRAY[ 1 ]}"
  tst_test test "c" == "${ARRAY[ 2 ]}"
@@ -32,7 +34,7 @@ tst_checkComplainAndAdjustExpected 0
 )
 tst_state_load
 
-tst_checkComplainAndAdjustExpected 11
+tst_checkComplainAndAdjustExpected 12
 
 echo $(tst_result)
 
