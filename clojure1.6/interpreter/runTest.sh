@@ -12,5 +12,5 @@ test "$( realpath "$FILE" )" == "$( realpath "testdata.clj" )" && exit 0
 export LANG=C
 export LC_ALL=C
 
-clojure -i testenv.clj -i testdata.clj "$FILE"
+clojure1.6 -i testenv.clj -i testdata.clj "$FILE"
 
