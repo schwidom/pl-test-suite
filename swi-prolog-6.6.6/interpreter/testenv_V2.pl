@@ -39,6 +39,7 @@ test( TERM) :- true
  , ( \+ \+ call( TERM2CALL) 
    -> CountOk_ is 1 + CountOk, CountFail_ is CountFail
    ; CountOk_ is CountOk, CountFail_ is 1 + CountFail
+      , format( "test failed ~w ~n", [TERM])
   )
  
  , nb_setval( countOk, CountOk_)
