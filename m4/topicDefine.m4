@@ -13,10 +13,13 @@ test( equal( [X], YZ))
 test( equal( [AB], AB))
 
 test( equal( [X], m4_indir( A[]B)))
+test( equal( [X], m4_ifelse( 1, 1, A[]B)))
 
 test( equal( [YZ], A[]B))
 test( equal( [YZ], A[]B()))
 test( equal( [YB], A()B))
+test( equal( [YZ], A()[]B))
+test( equal( [Y()Z], A[]()B))
 test( equal( [YB()], A()B()))
 test( equal( [AZ], [A]B))
 test( equal( [AZ], [A]B()))
@@ -25,7 +28,7 @@ m4_define( [YB], [W])
 
 test( equal( [W], A()B))
 
-checkComplainAndAdjustExpected( 12)
+checkComplainAndAdjustExpected( 15)
 
 m4_divert( m4_incr( m4_divnum))m4_dnl
 result()
