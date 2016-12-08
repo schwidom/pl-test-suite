@@ -11,14 +11,7 @@ void* y( fpv2 fl, fpv flreturn) { // Y-Combinator
 
   void* callwithP( void* f) { fpv fl= f; return fl( p); }
 
-  void* callwithLoop( void* p) {
-
-   void* callwithP( void* f) { fpv fl= f; return fl( p); }
-
-   return fl( callwithLoop, callwithP);
-  }
-
-  return fl( callwithLoop, callwithP);
+  return fl( fret, callwithP);
  }
 
  return flreturn( fret);
