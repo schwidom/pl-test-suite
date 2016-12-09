@@ -11,7 +11,14 @@ void* y( fpv2 fl, fpv flreturn) { // Y-Combinator
 
   void* callwithP( void* f) { fpv fl= f; return fl( p); }
 
-  return fl( fret, callwithP);
+  // return fl( fret, callwithP); // shortcut, works
+  
+  void* callYwithF( void* fy) {
+   
+   return fl( fy, callwithP); // [(f (y f)) p], the real thing, part 2
+  }
+
+  return( y( fl, callYwithF)); // (f [(y f)]) p, the real thing, part 1
  }
 
  return flreturn( fret);
