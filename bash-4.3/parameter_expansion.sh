@@ -66,11 +66,23 @@ tst_checkComplainAndAdjustExpected 0
  tst_test test "a:b:c:d:e" = "${PATH_LIKE/%:d/}"
  tst_test test "a:b:c:d-" = "${PATH_LIKE/%:e/-}"
 
+ tst_test test "X" = "${PATH_LIKE//*/X}"
+ tst_test test "XXXXXXXXX" = "${PATH_LIKE//?/X}"
+ tst_test test "XXX" = "${PATH_LIKE//???/X}"
+ tst_test test "a:X:e" = "${PATH_LIKE//b*d/X}"
+
+ tst_checkComplainAndAdjustExpected 11
+
+ # todo: ${X#<literal or pattern>}  # Remove matching prefix pattern
+ # todo: ${X##<literal or pattern>} 
+ # todo: ${X%<literal or pattern>}  # Remove matching suffix pattern
+ # todo: ${X%%<literal or pattern>} 
+
  tst_state_save
 )
 tst_state_load
 
-tst_checkComplainAndAdjustExpected 7
+tst_checkComplainAndAdjustExpected 0
 
 echo $(tst_result)
 
