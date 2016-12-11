@@ -22,6 +22,7 @@ tst_checkComplainAndAdjustExpected 0
  # tst_test test "$VAR1" == "$VAR2"
 
  tst_test test "$( head -n 3 <&"${X[0]}")" == "$( printf "1\n2\n1\n")"
+ tst_test test "$( head -n 3 <&"${X[0]}")" == "$( printf "2\n1\n2\n")"
 
  kill "$XPID" &&
 
@@ -35,7 +36,7 @@ tst_checkComplainAndAdjustExpected 0
 
 tst_state_load
 
-tst_checkComplainAndAdjustExpected 3
+tst_checkComplainAndAdjustExpected 4
 
 echo $(tst_result)
 
