@@ -15,17 +15,35 @@ tst_test()
 {
  local CALL=""
 
- set +o histexpand
+ test $# -eq 0 && { echo 'tst_test: no parameters given, exiting'; exit 1;}
+
+ test $# -gt 0 && { 
+
+  set "${@//\\/\\\\}" # first!
+  set "${@//\"/\\\"}"
+  set "${@//\'/\\\'}"
+  set "${@//\ /\\\ }"
+  set "${@//$'\n'/$'\\\n'}"
+
+ }
+
+ CALL=''
 
  while test 0 -ne $#
  do
   case $1 in 
-   (!) CALL+="$1 " ;;
-   (*) CALL+="'$1' " ;;
+   ('') CALL+="'' " ;;
+   (*) CALL+="$1 " ;;
   esac
 
   shift
  done
+
+ # echo "CALL: $CALL"
+
+ # test $# -gt 0 && CALL="$( printf "%q " "$@")"
+
+ set +o histexpand
 
  eval "$CALL" &&
  {
