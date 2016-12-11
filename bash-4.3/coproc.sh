@@ -7,7 +7,7 @@ tst_checkComplainAndAdjustExpected 0
 
 (
 
- coproc X while true; do echo 1; echo 2; done; 
+ coproc X while true; do stdbuf -i 0 -e 0 -o L echo 1; stdbuf -i 0 -e 0 -o L echo 2; done; 
  XPID="$!"
 
  # tst_test [[ "${X[@]}" =~ ^[[:digit:]]+\ [[:digit:]]+$ ]] # works in console inexplicably
